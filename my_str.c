@@ -113,6 +113,38 @@ int my_strcmp(const char* dest, const char* src)//比较两个字符串，相同返回0，des
 	}
 }
 
+int my_strncmp(const char* dest, const char* src, int n)//比较两个字符串的前n个字符，相同返回0，dest大于src返回1，dest小于src返回-1
+{
+	assert(dest && src);
+	while (*dest && *src && n--)
+	{
+		if (*(unsigned char*)dest < *(unsigned char*)src)
+		{
+			return -1;
+		}
+		else if (*(unsigned char*)dest > *(unsigned char*)src)
+		{
+			return 1;
+		}
+		else
+		{
+			++dest;
+			++src;
+		}
+	}
+	if (*dest != '\0')
+	{
+		return 1;
+	}
+	else if (*src != '\0')
+	{
+		return -1;
+	}
+	else
+	{
+		return 0;
+	}
+}
 
 void* my_memcpy(void* dest, const void* src, size_t n)//作用与strcpu相同，但是memcpy是泛型的，可以对各种类型使用
 {
@@ -155,13 +187,13 @@ int main()
 	char* dest = "hello ";
 	char c = 'e';
 
-	int arr1[4] = {0};
-	int arr2[4] = {1,2,3,4};
+	int arr1[4] = { 0 };
+	int arr2[4] = { 1,2,3,4 };
 	size_t n = sizeof(arr2);
 
 	printf("%s\n", my_strncpy(dest, src, 3));
 
-	/*printf("%s\n", my_strcat(dest, src));
+	printf("%s\n", my_strcat(dest, src));
 
 	printf("%p\n", dest);
 	printf("%p\n", my_strstr(dest, src));
@@ -169,6 +201,8 @@ int main()
 	printf("%s\n", my_strchr(dest, c));
 
 	printf("%d\n", my_strcmp(dest, src));
+
+	printf("%d\n", my_strncmp(dest, src, 3));
 
 	my_memcpy(arr1, arr2, n);
 	for (int i = 0; i < 4; i++)
@@ -180,7 +214,7 @@ int main()
 	for (int i = 0; i < 4; i++)
 	{
 		printf("%d ", arr1[i]);
-	}*/
+	}
 	system("pause");
 	return 0;
 }
