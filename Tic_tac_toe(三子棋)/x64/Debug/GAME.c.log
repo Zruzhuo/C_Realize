@@ -1,0 +1,6 @@
+﻿  game.c
+  test.c
+  正在生成代码...
+e:\c 练习\game.c\game.c(104): warning C4715: “is_full”: 不是所有的控件路径都返回值
+e:\c 练习\game.c\game.c(136): warning C4715: “is_win”: 不是所有的控件路径都返回值
+  GAME.c.vcxproj -> E:\c 练习\x64\Debug\GAME.c.exe
