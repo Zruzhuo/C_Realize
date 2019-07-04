@@ -1,0 +1,6 @@
+﻿  game.c
+e:\c 练习\minesweeper_game(扫雷)\game.c(55): warning C4028: 形参 2 与声明不同
+e:\c 练习\minesweeper_game(扫雷)\game.c(55): warning C4029: 声明的形参表不同于定义
+  test.c
+  正在生成代码...
+  扫雷.c.vcxproj -> E:\c 练习\Minesweeper_game(扫雷)\Debug\扫雷.c.exe
