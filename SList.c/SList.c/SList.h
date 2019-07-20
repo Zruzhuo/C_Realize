@@ -17,8 +17,8 @@ void SListInit(SList* psl, size_t capacity);//初始化
 void SListDestroy(SList* psl);//销毁
 void CheckCapacity(SList* psl);//增加容量（开空间）
 
-void SlistPushFront(SList* psl, SLDataType x);//头插
-void SlistPushBack(SList* psl, SLDataType x);//尾插
+void SListPushFront(SList* psl, SLDataType x);//头插
+void SListPushBack(SList* psl, SLDataType x);//尾插
 void SListPopFront(SList* psl);//头删
 void SListPopBack(SList* psl);//尾删
 size_t SListFind(SList* psl, SLDataType x);//查找

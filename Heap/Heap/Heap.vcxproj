@@ -20,7 +20,7 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{FB332B57-5F0F-4AD9-85D8-FFA9A288BCF4}</ProjectGuid>
+    <ProjectGuid>{311B77F2-1A06-40A0-88AF-77435CB253EA}</ProjectGuid>
     <RootNamespace>Heap</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
@@ -115,7 +115,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Test.c" />
+    <ClInclude Include="Heap.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Heap.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
