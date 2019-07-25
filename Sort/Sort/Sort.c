@@ -2,11 +2,26 @@
 
 void Swap(int* p1, int* p2)
 {
-
+	int temp = 0;
+	temp = *p1;
+	*p1 = *p2;
+	*p2 = temp;
 }
 void InsertSort(int* a, int n)//≤Â»Î≈≈–Ú
 {
-
+	int i = 0;
+	int j = 0;
+	int cur = 0;
+	for (i = 1; i < n; ++i)
+	{
+		cur = a[i];
+		j = i - 1;	
+		for (; j >= 0 && cur < a[j]; --j)
+		{
+			a[j + 1] = a[j];
+		}
+		a[j + 1] = cur;
+	}
 }
 void ShellSort(int* a, int n)//œ£∂˚≈≈–Ú
 {

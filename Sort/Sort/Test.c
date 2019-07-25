@@ -1,10 +1,35 @@
 #include"Sort.h"
 
+void testInsert()
+{
+	int a1[6] = { 3, 2, 4, 1, 5 };
+	PrintArr(a1, 5);
+	InsertSort(a1, 5);
+	PrintArr(a1, 5);
+	printf("\n");
+}
+void testShell()
+{
+	int a2[6] = { 3, 2, 4, 1, 5 };
+	PrintArr(a2, 5);
+	ShellSort(a2, 5);
+	PrintArr(a2, 5);
+	printf("\n");
+}
+void testSelect()
+{
+	int a3[6] = { 3, 2, 4, 1, 5 };
+	PrintArr(a3, 5);
+	SelectSort(a3, 5);
+	PrintArr(a3, 5);
+	printf("\n");
+}
+
 int main()
 {
-	int a[10] = {9, 8, 7, 6, 5, 4, 3, 2, 1, 0};
-	ShellSort(a, 10);
-	PrintArr(a, 10);
+	testInsert();
+	/*testShell();
+	testSelect();*/
 	system("pause");
 	return 0;
 }
