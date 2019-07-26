@@ -35,13 +35,13 @@ void testBubble()
 }
 void testQuick()
 {
-	int a3[7] = { 3, 2, 77, 11, 2 ,71};
+	int a3[11] = { 9, 8, 7, 6, 5, 4, 3, 2, 1, 0};
 	int a4[15] = { 3, 2, 77, 11, 2 ,71, 11, 22, 33, 44, 2, 22};
-	PrintArr(a3, 6);
-	QuickSort1(a3, 0, 5);
-	PrintArr(a3, 6);
-	QuickSort2(a4, 0, 11);
-	PrintArr(a4, 12);
+	PrintArr(a3, 10);
+	QuickSort1(a3, 0, 9);
+	PrintArr(a3, 10);
+	//QuickSort2(a4, 0, 11);
+	//PrintArr(a4, 12);
 	printf("\n");
 }
 void testHeap()
@@ -54,12 +54,12 @@ void testHeap()
 }
 int main()
 {
-	testInsert();
+	/*testInsert();
 	testShell();
 	testSelect();
-	testBubble();
+	testBubble();*/
 	testQuick();
-	testHeap();
+	//testHeap();
 	system("pause");
 	return 0;
 }

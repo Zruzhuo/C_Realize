@@ -1,4 +1,4 @@
-
+#include"BinaryTree.h"
 
 int BinaryTreeLeafSize(BTNode* root)
 {
@@ -6,11 +6,11 @@ int BinaryTreeLeafSize(BTNode* root)
 	{
 		return 0;
 	}
-	if (root->left == NULL && root->right == NULL)
+	if (root->_left == NULL && root->_right == NULL)
 	{
 		return 1;
 	}
-	return BinaryTreeLeafSize(root->left) + BinaryTreeLeafSize(root->right);
+	return BinaryTreeLeafSize(root->_left) + BinaryTreeLeafSize(root->_right);
 }
 int BinaryTreeLevelKSize(BTNode* root, int k)
 {
@@ -22,7 +22,7 @@ int BinaryTreeLevelKSize(BTNode* root, int k)
 	{
 		return 1;
 	}
-	return BinaryTreeLevelKSize(root->left, k - 1) + BinaryTreeLevelKSize(root->right, k - 1);
+	return BinaryTreeLevelKSize(root->_left, k - 1) + BinaryTreeLevelKSize(root->_right, k - 1);
 }
 BTNode* BinaryTreeFind(BTNode* root, char x)
 {
@@ -32,13 +32,13 @@ BTNode* BinaryTreeFind(BTNode* root, char x)
 	if (root->val == x)
 		return root;
 
-	BTNode* lret = BinaryTreeFind(root->left, x);
+	BTNode* lret = BinaryTreeFind(root->_left, x);
 	if (lret != NULL)
 	{
 		return lret;
 	}
 
-	BTNode* rret = BinaryTreeFind(root->right, x);
+	BTNode* rret = BinaryTreeFind(root->_right, x);
 	if(rret != NULL)
 	{
 		return rret;
