@@ -248,6 +248,38 @@ void QuickSort2(int* a, int left, int right)//快速排序->挖坑法
 		InsertSort(a + left, right - left + 1);
 	}
 }
+int PartSort3(int* a, int left, int right)//快速排序->前后指针法
+{
+	int prev = left - 1;
+	int cur = left;
+	int key = a[right];
+	while(cur != right)
+	{
+		if (a[cur] <= key && ++prev != cur)
+		{
+			Swap(&a[prev], &a[cur]);
+		}		
+		++cur;		
+	}
+	++prev;
+	Swap(&a[right], &a[prev]);
+	return prev;
+}
+void QuickSort3(int* a, int left, int right)//快速排序->前后指针法
+{
+	if (left >= right)
+		return;
+	if (right - left + 1 > 10)
+	{
+		int key_index = PartSort3(a, left, right);
+		QuickSort3(a, left, key_index - 1);
+		QuickSort3(a, key_index + 1, right);
+	}
+	else
+	{
+		InsertSort(a + left, right - left + 1);
+	}
+}
 void PrintArr(int* a, int n)
 {
 	for (int i = 0; i < n; ++i)

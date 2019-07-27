@@ -12,6 +12,7 @@ void HeapSort(int* a, int n);//堆排序
 void BubbleSort(int* a, int n);//冒泡排序
 void QuickSort1(int* a, int left, int right);//快速排序->左右指针法
 void QuickSort2(int* a, int left, int right);//快速排序->挖坑法
+void QuickSort3(int* a, int left, int right);//快速排序->前后指针法
 void PrintArr(int* a, int n);
 
 
