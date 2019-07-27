@@ -305,21 +305,21 @@ void QuickSort3(int* a, int left, int right)//快速排序->前后指针法
 //		}
 //	}
 //}
-void Merge(int* a, int* tmp, int left, int right)
-{
-	int mid = left + (right - left) / 2;
-	while ()
-	{
-		if (a[left] < a[mid + 1])
-		{
-			tmp[left] = a[left];
-		}
-		else
-		{
-			tmp[left] = a[mid + 1];
-		}
-	}
-}
+//void Merge(int* a, int* tmp, int left, int right)
+//{
+//	int mid = left + (right - left) / 2;
+//	while ()
+//	{
+//		if (a[left] < a[mid + 1])
+//		{
+//			tmp[left] = a[left];
+//		}
+//		else
+//		{
+//			tmp[left] = a[mid + 1];
+//		}
+//	}
+//}
 void _MergeSort(int* a, int left, int right, int* tmp)
 {
 	if (left == right)

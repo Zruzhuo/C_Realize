@@ -13,6 +13,7 @@ void BubbleSort(int* a, int n);//冒泡排序
 void QuickSort1(int* a, int left, int right);//快速排序->左右指针法
 void QuickSort2(int* a, int left, int right);//快速排序->挖坑法
 void QuickSort3(int* a, int left, int right);//快速排序->前后指针法
+void _MergeSort(int* a, int left, int right, int* tmp);
 void PrintArr(int* a, int n);
 
 
