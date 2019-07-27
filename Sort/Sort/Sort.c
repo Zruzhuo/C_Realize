@@ -280,6 +280,89 @@ void QuickSort3(int* a, int left, int right)//快速排序->前后指针法
 		InsertSort(a + left, right - left + 1);
 	}
 }
+//void QuickSortNoR(int* a, int left, int right)//快速排序->非递归
+//{
+//	Stack s;
+//	StackInit(&s);
+//	StackPush(&s, left);
+//	StackPush(&s, right);
+//	while (!StackEmpty(&s))
+//	{
+//		int end = StackTop(&s);
+//		StackPop(&s);
+//		int begin = StackTop(&s);
+//		StackPop(&s);
+//		int key_index = PartSort3(a, begin, end);
+//		if (begin < key_index - 1)
+//		{
+//			StackPush(&s, begin);
+//			StackPush(&s, key_index - 1);
+//		}
+//		if  (key_index + 1 < end)
+//		{		
+//			StackPush(&s, key_index + 1);
+//			StackPush(&s, end);
+//		}
+//	}
+//}
+void Merge(int* a, int* tmp, int left, int right)
+{
+	int mid = left + (right - left) / 2;
+	while ()
+	{
+		if (a[left] < a[mid + 1])
+		{
+			tmp[left] = a[left];
+		}
+		else
+		{
+			tmp[left] = a[mid + 1];
+		}
+	}
+}
+void _MergeSort(int* a, int left, int right, int* tmp)
+{
+	if (left == right)
+		return;
+
+	int mid = left + (right - left) / 2;
+	_MergeSort(a, left, mid, tmp);
+	_MergeSort(a, mid + 1, right, tmp);
+	
+	int begin1 = left, end1 = mid;
+	int begin2 = mid + 1, end2 = right;
+	int i = left;
+	while (begin1 <= end1 && begin2 <= end2)
+	{
+		if (a[begin1] < a[begin2])
+		{
+			tmp[i++] = a[begin1];
+			++begin1;
+		}
+		else
+		{
+			tmp[i++] = a[begin2];
+			++begin2;
+		}
+	}
+	while (begin1 <= end1)
+	{
+		tmp[i++] = begin1;
+		++begin1;
+	}
+	while (begin2 <= end2)
+	{
+		tmp[i++] = begin2;
+		++begin2;
+	}
+	memcpy(a + left, tmp + left, sizeof(int)*(i - left));
+}
+void MergeSort(int* a, int n)
+{
+	int* tmp = (int*)malloc(sizeof(int) * n);
+	_MergeSort(a, 0, n - 1, tmp);
+	free(tmp);
+}
 void PrintArr(int* a, int n)
 {
 	for (int i = 0; i < n; ++i)
