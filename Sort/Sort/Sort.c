@@ -332,12 +332,12 @@ void _MergeSort(int* a, int left, int right, int* tmp)
 	}
 	while (begin1 <= end1)
 	{
-		tmp[i++] = begin1;
+		tmp[i++] = a[begin1];
 		++begin1;
 	}
 	while (begin2 <= end2)
 	{
-		tmp[i++] = begin2;
+		tmp[i++] = a[begin2];
 		++begin2;
 	}
 	memcpy(a + left, tmp + left, sizeof(int)*(i - left));

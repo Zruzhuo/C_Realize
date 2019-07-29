@@ -56,7 +56,7 @@ void testMerge()
 {
 	int a4[6] = { 3, 2, 4, 1, 5 };
 	PrintArr(a4, 5);
-	MergeSortNoR(a4, 5);
+	MergeSort(a4, 5);
 	PrintArr(a4, 5);
 	printf("\n");
 }
@@ -76,8 +76,8 @@ int main()
 	testBubble();*/
 	/*testQuick();*/
 	//testHeap();
-	//testMerge();
-	testCount();
+	testMerge();
+	/*testCount();*/
 	system("pause");
 	return 0;
 }

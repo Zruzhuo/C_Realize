@@ -1,2 +1,4 @@
-﻿  Test.c
+﻿  Sort.c
+e:\c 练习\c_realize\sort\sort\sort.c(343): warning C4013: “memcpy”未定义；假设外部返回 int
+e:\c 练习\c_realize\sort\sort\sort.c(407): warning C4013: “memset”未定义；假设外部返回 int
   Sort.vcxproj -> E:\c 练习\C_Realize\Sort\Debug\Sort.exe
