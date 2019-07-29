@@ -52,14 +52,32 @@ void testHeap()
 	PrintArr(a3, 5);
 	printf("\n");
 }
+void testMerge()
+{
+	int a4[6] = { 3, 2, 4, 1, 5 };
+	PrintArr(a4, 5);
+	MergeSortNoR(a4, 5);
+	PrintArr(a4, 5);
+	printf("\n");
+}
+void testCount()
+{
+	int a4[6] = { 3, 2, 4, 1, 5 };
+	PrintArr(a4, 5);
+	CountSort(a4, 5);
+	PrintArr(a4, 5);
+	printf("\n");
+}
 int main()
 {
 	/*testInsert();
 	testShell();
 	testSelect();
 	testBubble();*/
-	testQuick();
+	/*testQuick();*/
 	//testHeap();
+	//testMerge();
+	testCount();
 	system("pause");
 	return 0;
 }

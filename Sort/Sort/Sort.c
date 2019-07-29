@@ -305,21 +305,6 @@ void QuickSort3(int* a, int left, int right)//快速排序->前后指针法
 //		}
 //	}
 //}
-//void Merge(int* a, int* tmp, int left, int right)
-//{
-//	int mid = left + (right - left) / 2;
-//	while ()
-//	{
-//		if (a[left] < a[mid + 1])
-//		{
-//			tmp[left] = a[left];
-//		}
-//		else
-//		{
-//			tmp[left] = a[mid + 1];
-//		}
-//	}
-//}
 void _MergeSort(int* a, int left, int right, int* tmp)
 {
 	if (left == right)
@@ -334,7 +319,7 @@ void _MergeSort(int* a, int left, int right, int* tmp)
 	int i = left;
 	while (begin1 <= end1 && begin2 <= end2)
 	{
-		if (a[begin1] < a[begin2])
+		if (a[begin1] <= a[begin2])
 		{
 			tmp[i++] = a[begin1];
 			++begin1;
@@ -362,6 +347,78 @@ void MergeSort(int* a, int n)
 	int* tmp = (int*)malloc(sizeof(int) * n);
 	_MergeSort(a, 0, n - 1, tmp);
 	free(tmp);
+}
+void MergeSortNoR(int* a, int n)
+{
+	int* tmp = (int*)malloc(sizeof(int) * n);
+	int gap = 1;
+	while (gap < n)
+	{		
+		for (int begin = 0; begin < n; begin += 2*gap)
+		{
+			//[begin, begin + gap - 1] [begin + gap, begin + 2*gap - 1]
+			//[0, 0][1, 1]  gap = 1
+			//[0, 1][2, 3]  gap = 2	
+			int begin1 = begin, begin2 = begin + gap, end1 = begin + gap - 1, end2 = begin + 2*gap -1;
+			if (end1 >= n)
+				end1 = n - 1;
+			if (end2 >= n)
+				end2 = n - 1;
+			int index = begin1;
+			while (begin1 <= end1 && begin2 <= end2)
+			{
+				if (a[begin1] <= a[begin2])
+					tmp[index++] = a[begin1++];
+				else
+					tmp[index++] = a[begin2++];
+			}
+			while (begin1 <= end1)
+			{
+				tmp[index++] = a[begin1++];
+			}
+			while (begin2 <= end2)
+			{
+				tmp[index++] = a[begin2++];
+			}
+		}
+		memcpy(a, tmp, sizeof(int) * n);
+		gap *= 2;
+	}
+	free(tmp);
+}
+
+void CountSort(int* a, int n)//非比较排序->计数排序
+{
+	int max = a[0];
+	int min = a[0];
+	for (int i = 1; i < n; ++i)
+	{
+		if (max < a[i])
+		{
+			max = a[i];
+		}
+		if (min > a[i])
+		{
+			min = a[i];
+		}
+	}
+	int size = max - min + 1;
+	int* tmp = (int*)malloc(sizeof(int) * size);
+	memset(tmp, 0, sizeof(int) * size);
+	//统计次数
+	for (int i = 0; i < n; ++i)
+	{
+		tmp[a[i] - min]++;
+	}
+	//排序
+	int j = 0;
+	for (int i = 0; i < size; ++i)
+	{
+		while (tmp[i]--)
+		{
+			a[j++] = i + min;
+		}
+	}
 }
 void PrintArr(int* a, int n)
 {
