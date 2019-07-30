@@ -11,10 +11,7 @@ ListNode* BuyListNode(LTDataType x)
 void ListInit(List* plt)
 {
 	assert(plt);
-	ListNode* head = (ListNode*)malloc(sizeof(ListNode));
-	head->_next = head;
-	head->_prev = head;
-	plt->_head = head;
+	plt->_head = NULL;
 }
 
 void ListDestory(List* plt)
