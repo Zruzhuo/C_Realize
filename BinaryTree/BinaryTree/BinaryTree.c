@@ -1,6 +1,22 @@
 #include"BinaryTree.h"
 
-int BinaryTreeLeafSize(BTNode* root)
+void BTInit(BTNode* root)
+{
+	assert(root);
+	root->_left = NULL;
+	root->_right = NULL;
+}
+void BTDistory(BTNode* root)
+{
+	if (root == NULL)
+		return;
+	BTDistory(root->_left);
+	BTDistory(root->_right);
+	free(root);
+	root = NULL;
+	return;
+}
+int BTLeafSize(BTNode* root)
 {
 	if (root == NULL)
 	{
@@ -12,7 +28,7 @@ int BinaryTreeLeafSize(BTNode* root)
 	}
 	return BinaryTreeLeafSize(root->_left) + BinaryTreeLeafSize(root->_right);
 }
-int BinaryTreeLevelKSize(BTNode* root, int k)
+int BTLevelKSize(BTNode* root, int k)
 {
 	if (root == NULL)
 	{
@@ -24,7 +40,7 @@ int BinaryTreeLevelKSize(BTNode* root, int k)
 	}
 	return BinaryTreeLevelKSize(root->_left, k - 1) + BinaryTreeLevelKSize(root->_right, k - 1);
 }
-BTNode* BinaryTreeFind(BTNode* root, char x)
+BTNode* BTFind(BTNode* root, char x)
 {
 	if (root == NULL)
 		return NULL;
@@ -45,4 +61,29 @@ BTNode* BinaryTreeFind(BTNode* root, char x)
 	}
 
 	return NULL;
+}
+
+void BTPrevOrder(BTNode* root)
+{
+	if (root == NULL)
+		return;
+	printf("%c ", root->val);
+	BTPrevOrder(root->_left);
+	BTPrevOrder(root->_right);
+}
+void BTInOrder(BTNode* root)
+{
+	if (root == NULL)
+		return;
+	BTPrevOrder(root->_left);
+	printf("%c ", root->val);
+	BTPrevOrder(root->_right);
+}
+void BTPostOrder(BTNode* root)
+{
+	if (root == NULL)
+		return;
+	BTPrevOrder(root->_left);
+	BTPrevOrder(root->_right);
+	printf("%c ", root->val);
 }
