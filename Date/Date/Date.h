@@ -5,21 +5,10 @@ using namespace std;
 class Date
 {
 public:
-	bool Leapyear(int year)
-	{
-		if (((year % 100 != 0) && (year % 4 == 0)) || (year % 400 == 0))
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
-	}
 	int GetMonthDay(int year, int month)
 	{
 		static int monthDays[13] = { 0, 31, 28, 31, 30 ,31, 30, 31, 31, 30, 31, 30, 31};
-		if (month == 2 && Leapyear(year))
+		if (month == 2 && ((year % 100 != 0) && (year % 4 == 0)) || (year % 400 == 0) )
 		{
 			return 29;
 		}
@@ -36,15 +25,11 @@ public:
 		_month = month;
 		_day = day;
 
-		if (year >= 1900
-			&& month > 0 && month < 13
-			&& day > 0 && day <= GetMonthDay(year, month))
+		if (year < 1900
+			&& month <= 0 && month >= 13
+			&& day <= 0 && day > GetMonthDay(year, month))
 		{
-			cout << "日期格式正确" << endl;
-		}
-		else
-		{
-			cout << "日期格式错误" << endl;
+			cout << "非法日期" << endl;
 		}
 	}
 
@@ -118,69 +103,11 @@ public:
 	}
 	bool operator<=(const Date& d)
 	{
-		if (_year < d._year)
-		{
-			return true;
-		}
-		if (_year > d._year)
-		{
-			return false;
-		}
-		if (_year == d._year)
-		{
-			if (_month < d._month)
-			{
-				return true;
-			}
-			if (_month > d._month)
-			{
-				return false;
-			}
-			if (_month == d._month)
-			{
-				if (_day <= d._day)
-				{
-					return true;
-				}
-				else
-				{
-					return false;
-				}
-			}
-		}
+		return *this < d || *this == d;
 	}
 	bool operator>=(const Date& d)
 	{
-		if (_year > d._year)
-		{
-			return true;
-		}
-		if (_year < d._year)
-		{
-			return false;
-		}
-		if (_year == d._year)
-		{
-			if (_month > d._month)
-			{
-				return true;
-			}
-			if (_month < d._month)
-			{
-				return false;
-			}
-			if (_month == d._month)
-			{
-				if (_day >= d._day)
-				{
-					return true;
-				}
-				else
-				{
-					return false;
-				}
-			}
-		}
+		return !(*this < d);
 	}
 	bool operator==(const Date& d)
 	{
@@ -209,22 +136,24 @@ public:
 	// d + 100
 	Date operator+(int day)
 	{
-		Date x(*this);
-		int Monthday = GetMonthDay(_year, _month);
-		while (day > Monthday)
+		Date x = *this;
+		x._day += day;
+		while (x._day > GetMonthDay(_year, _month))
 		{
-			if (x._month > 12)
+			x._day -= GetMonthDay(_year, _month);
+			if (x._month == 12)
 			{
 				x._year++;
 				x._month = 1;
 			}
-			x._month++;
-			day -= Monthday;
+			else
+			{
+				x._month++;
+			}			
 		}
-		x._day = day;
 		return x;
 	}
-	Date operator-(int day);
+	
 	Date& operator+=(int day)
 	{
 		int Monthday = GetMonthDay(_year, _month);
@@ -241,7 +170,29 @@ public:
 		_day = day;
 		return *this;
 	}
-	Date operator-=(int day);
+	Date operator-=(int day)
+	{
+		_day = day;
+		while (_day < 1)
+		{
+			if (_month == 1)
+			{
+				--_year;
+				_month = 12;
+			}
+			else
+			{
+				--_month;
+			}
+			_month--;
+			_day += GetMonthDay(_year, _month);
+		}
+	}
+	Date operator-(int day)
+	{
+		Date x = *this;
+		x -=  ;
+	}
 	int operator-(const Date& d)
 	{
 		int Monthday = GetMonthDay(_year, _month);
@@ -259,9 +210,18 @@ public:
 	}
 
 	// ++d d.operator++(&d)
-	Date operator++();
+	Date operator++()
+	{
+		*this += 1;
+		return *this;
+	}
 	// d++ d.operator++(&d, 0)
-	Date operator++(int);
+	Date operator++(int)
+	{
+		Date tmp = *this;
+		*this += 1;
+		return tmp;
+	}
 private:
 	int _year;
 	int _month;
