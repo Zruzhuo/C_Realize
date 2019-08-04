@@ -41,32 +41,21 @@ public:
 		{
 			return true;
 		}
-		if (_year > d._year)
-		{
-			return false;
-		}
-		if (_year == d._year)
+		else if(_year == d._year)
 		{
 			if (_month < d._month)
 			{
 				return true;
-			}
-			if (_month > d._month)
-			{
-				return false;
-			}
-			if (_month == d._month)
+			}		
+			else if (_month == d._month)
 			{
 				if (_day < d._day)
 				{
 					return true;
 				}
-				else
-				{
-					return false;
-				}
 			}
 		}
+		return false;
 	}
 	bool operator>(const Date& d)
 	{
@@ -74,32 +63,21 @@ public:
 		{
 			return true;
 		}
-		if (_year < d._year)
-		{
-			return false;
-		}
-		if (_year == d._year)
+		else if (_year == d._year)
 		{
 			if (_month > d._month)
 			{
 				return true;
 			}
-			if (_month < d._month)
-			{
-				return false;
-			}
-			if (_month == d._month)
+			else if (_month == d._month)
 			{
 				if (_day > d._day)
 				{
 					return true;
 				}
-				else
-				{
-					return false;
-				}
 			}
 		}
+		return false;
 	}
 	bool operator<=(const Date& d)
 	{
@@ -112,27 +90,17 @@ public:
 	bool operator==(const Date& d)
 	{
 		if (_year == d._year && _month == d._month && _day == d._day)
-		{
 			return true;
-		}
 		else
-		{
 			return false;
-		}
-
 	}
 	bool operator!=(const Date& d)
 	{
-		if (_year != d._year && _month != d._month && _day != d._day)
-		{
-			return true;
-		}
-		else
-		{
+		if (*this == d)
 			return false;
-		}
+		else
+			return true;
 	}
-
 	// d + 100
 	Date operator+(int day)
 	{
@@ -191,7 +159,6 @@ public:
 	Date operator-(int day)
 	{
 		Date x = *this;
-		x -=  ;
 	}
 	int operator-(const Date& d)
 	{
