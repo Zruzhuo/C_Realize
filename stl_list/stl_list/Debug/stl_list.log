@@ -1,0 +1,121 @@
+﻿  list.cpp
+c:\users\lenovo\source\repos\stl_list\stl_list\list.cpp(310): error C2248: “List_Iterator<T,const T &,const T *>::List_Iterator”: 无法访问 private 成员(在“List_Iterator<T,const T &,const T *>”类中声明)
+          with
+          [
+              T=int
+          ]
+  c:\users\lenovo\source\repos\stl_list\stl_list\list.cpp(31): note: 参见“List_Iterator<T,const T &,const T *>::List_Iterator”的声明
+          with
+          [
+              T=int
+          ]
+  c:\users\lenovo\source\repos\stl_list\stl_list\list.cpp(124): note: 参见“List_Iterator<T,const T &,const T *>”的声明
+          with
+          [
+              T=int
+          ]
+c:\users\lenovo\source\repos\stl_list\stl_list\list.cpp(311): error C2248: “List_Iterator<T,const T &,const T *>::operator !=”: 无法访问 private 成员(在“List_Iterator<T,const T &,const T *>”类中声明)
+          with
+          [
+              T=int
+          ]
+  c:\users\lenovo\source\repos\stl_list\stl_list\list.cpp(53): note: 参见“List_Iterator<T,const T &,const T *>::operator !=”的声明
+          with
+          [
+              T=int
+          ]
+  c:\users\lenovo\source\repos\stl_list\stl_list\list.cpp(124): note: 参见“List_Iterator<T,const T &,const T *>”的声明
+          with
+          [
+              T=int
+          ]
+c:\users\lenovo\source\repos\stl_list\stl_list\list.cpp(313): error C2248: “List_Iterator<T,const T &,const T *>::operator *”: 无法访问 private 成员(在“List_Iterator<T,const T &,const T *>”类中声明)
+          with
+          [
+              T=int
+          ]
+  c:\users\lenovo\source\repos\stl_list\stl_list\list.cpp(34): note: 参见“List_Iterator<T,const T &,const T *>::operator *”的声明
+          with
+          [
+              T=int
+          ]
+  c:\users\lenovo\source\repos\stl_list\stl_list\list.cpp(124): note: 参见“List_Iterator<T,const T &,const T *>”的声明
+          with
+          [
+              T=int
+          ]
+c:\users\lenovo\source\repos\stl_list\stl_list\list.cpp(314): error C2248: “List_Iterator<T,const T &,const T *>::operator ++”: 无法访问 private 成员(在“List_Iterator<T,const T &,const T *>”类中声明)
+          with
+          [
+              T=int
+          ]
+  c:\users\lenovo\source\repos\stl_list\stl_list\list.cpp(42): note: 参见“List_Iterator<T,const T &,const T *>::operator ++”的声明
+          with
+          [
+              T=int
+          ]
+  c:\users\lenovo\source\repos\stl_list\stl_list\list.cpp(124): note: 参见“List_Iterator<T,const T &,const T *>”的声明
+          with
+          [
+              T=int
+          ]
+c:\users\lenovo\source\repos\stl_list\stl_list\list.cpp(340): error C2248: “List_Iterator<T,T &,T *>::operator ++”: 无法访问 private 成员(在“List_Iterator<T,T &,T *>”类中声明)
+          with
+          [
+              T=int
+          ]
+  c:\users\lenovo\source\repos\stl_list\stl_list\list.cpp(42): note: 参见“List_Iterator<T,T &,T *>::operator ++”的声明
+          with
+          [
+              T=int
+          ]
+  c:\users\lenovo\source\repos\stl_list\stl_list\list.cpp(123): note: 参见“List_Iterator<T,T &,T *>”的声明
+          with
+          [
+              T=int
+          ]
+c:\users\lenovo\source\repos\stl_list\stl_list\list.cpp(340): error C2248: “List_Iterator<T,T &,T *>::List_Iterator”: 无法访问 private 成员(在“List_Iterator<T,T &,T *>”类中声明)
+          with
+          [
+              T=int
+          ]
+  c:\users\lenovo\source\repos\stl_list\stl_list\list.cpp(31): note: 参见“List_Iterator<T,T &,T *>::List_Iterator”的声明
+          with
+          [
+              T=int
+          ]
+  c:\users\lenovo\source\repos\stl_list\stl_list\list.cpp(123): note: 参见“List_Iterator<T,T &,T *>”的声明
+          with
+          [
+              T=int
+          ]
+c:\users\lenovo\source\repos\stl_list\stl_list\list.cpp(342): error C2248: “List_Iterator<T,T &,T *>::operator ++”: 无法访问 private 成员(在“List_Iterator<T,T &,T *>”类中声明)
+          with
+          [
+              T=int
+          ]
+  c:\users\lenovo\source\repos\stl_list\stl_list\list.cpp(42): note: 参见“List_Iterator<T,T &,T *>::operator ++”的声明
+          with
+          [
+              T=int
+          ]
+  c:\users\lenovo\source\repos\stl_list\stl_list\list.cpp(123): note: 参见“List_Iterator<T,T &,T *>”的声明
+          with
+          [
+              T=int
+          ]
+c:\users\lenovo\source\repos\stl_list\stl_list\list.cpp(342): error C2248: “List_Iterator<T,T &,T *>::List_Iterator”: 无法访问 private 成员(在“List_Iterator<T,T &,T *>”类中声明)
+          with
+          [
+              T=int
+          ]
+  c:\users\lenovo\source\repos\stl_list\stl_list\list.cpp(31): note: 参见“List_Iterator<T,T &,T *>::List_Iterator”的声明
+          with
+          [
+              T=int
+          ]
+  c:\users\lenovo\source\repos\stl_list\stl_list\list.cpp(123): note: 参见“List_Iterator<T,T &,T *>”的声明
+          with
+          [
+              T=int
+          ]
