@@ -123,6 +123,7 @@
   <ItemGroup>
     <ClCompile Include="CentralCache.cpp" />
     <ClCompile Include="PageCache.cpp" />
+    <ClCompile Include="Test.cpp" />
     <ClCompile Include="ThreadCache.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
