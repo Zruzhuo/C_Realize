@@ -45,6 +45,6 @@ void* ThreadCache::FetchFromCentralCache(size_t index)
 	void* end = cur;
 
 	_freeLists[index].PushRange(head, cur);
-	return start;¡¤		
+	return start;	
 		  
 }
