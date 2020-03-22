@@ -175,7 +175,7 @@ int PartSort1(int* a, int left, int right)//快速排序->左右指针法
 	int key_index = left;
 	while (left < right)
 	{
-		//left找比key打的，right找比key小的，再交换
+		//left找比key大的，right找比key小的，再交换
 		while (left < right && a[right] >= key)//先检查是否越界，然后再访问
 		{
 			--right;

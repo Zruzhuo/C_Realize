@@ -13,12 +13,33 @@ inline void*& NextObj(void* obj) {
 class FreeList {
 public:
 	void Push(void* obj){
-		_freelist = NextObj(obj);
-
+		NextObj(obj) = _freelist;
+		_freelist = obj;
+	}
+	void PushRange(void* head, void* tail) {
+		NextObj(tail) = _freelist;
+		_freelist = head;
 	}
 	void* Pop() {
-
+		void* obj = _freelist;
+		_freelist = NextObj(obj);
+		return obj;
+	}
+	bool Empty() {
+		return _freelist == nullptr;
 	}
 private:
 	void* _freelist = nullptr;
+};
+
+class SizeClass {
+public:
+	static size_t List_Index(size_t size) {
+		if (size % 8 == 0) {
+			return size / 8 - 1;
+		}
+		else {
+			return size / 8;
+		}
+	}
 };
