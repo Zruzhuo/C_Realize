@@ -18,5 +18,19 @@ void ThreadCache::Dealloc(void* ptr, size_t size) {
 }
 
 void* ThreadCache::Fetch_From_CentralCache(size_t index) {
-
+	size_t num = 20;
+	size_t size = (index + 1) * 8;
+	char* start = (char*)malloc(size*num);
+	char* cur = start;
+	for (int i = 0; i < num - 1; ++i) {
+		char* next = cur + size;
+		NextObj(cur) = next;
+		cur = next;
+	}
+	NextObj(cur) = nullptr;
+	
+	void* head = NextObj(start);
+	void* tail = cur;
+	_freelists[index].PushRange(head, tail);
+	return start;
 }
