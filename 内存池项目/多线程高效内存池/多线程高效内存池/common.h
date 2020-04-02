@@ -2,13 +2,22 @@
 
 #include<iostream>
 #include<assert.h>
+#include<map>
+#include<thread>
+#include<mutex>
+
+
+#ifdef _WIN32
 #include<Windows.h>
-using namespace std;
+#endif 
+
+using std::endl;
+using std::cout;
 
 const size_t MAX_SIZE = 64 * 1024;
 const size_t NFREE_LIST = MAX_SIZE / 8;
 const size_t MAX_PAGES = 129;
-const size_t PAGE_SHIFT = 12;
+const size_t PAGE_SHIFT = 12; //4k为页移位
 
 inline void*& NextObj(void* obj) {
 	return *((void**)obj);
@@ -20,16 +29,19 @@ public:
 		//头插
 		NextObj(obj) = _freelist;
 		_freelist = obj;
+		++_num;
 	}
-	void PushRange(void* head, void* tail) {
+	void PushRange(void* head, void* tail, size_t num) {
 		//插入一块
 		NextObj(tail) = _freelist;
 		_freelist = head;
+		_num += num;
 	}
 	void* Pop() {
 		//头删
 		void* obj = _freelist;
 		_freelist = NextObj(obj);
+		--_num;
 		return obj;
 	}
 	size_t PopRange(void* start, void* end, size_t num) {
@@ -43,14 +55,23 @@ public:
 		start = _freelist;
 		end = prev;
 		_freelist = cur;
+		_num -= actual_num;
 
 		return actual_num;
+	}
+	size_t Num() {
+		return _num;
 	}
 	bool Empty() {
 		return _freelist == nullptr;
 	}
+	void Clear() {
+		_freelist = nullptr;
+		_num = 0;
+	}
 private:
 	void* _freelist = nullptr;
+	size_t _num = 0;
 };
 
 class SizeClass {
@@ -75,29 +96,29 @@ public:
 		}
 		return -1;
 	}
-	static size_t _List_Index(size_t size, int align_shift) {
+	static size_t _ListIndex(size_t size, int align_shift) {
 		return ((size + (1 << align_shift) - 1) >> align_shift) - 1;
 	}
-	static size_t List_Index(size_t size) {
+	static size_t ListIndex(size_t size) {
 		assert(size <= MAX_SIZE);
 		//每个区间有多少个链
 		static int group_arr[4] = { 16,56,56,56 };
 		if (size <= 128) {
-			return _List_Index(size, 3);
+			return _ListIndex(size, 3);
 		}
 		else if (size <= 1024) {
-			return _List_Index(size - 128, 4) + group_arr[0];
+			return _ListIndex(size - 128, 4) + group_arr[0];
 		}
 		else if (size <= 8192) {
-			return _List_Index(size - 1024, 7) + group_arr[1] + group_arr[0];
+			return _ListIndex(size - 1024, 7) + group_arr[1] + group_arr[0];
 		}
 		else if (size <= 65536) {
-			return _List_Index(size - 8192, 10) + group_arr[2] + group_arr[1] + group_arr[0];
+			return _ListIndex(size - 8192, 10) + group_arr[2] + group_arr[1] + group_arr[0];
 		}
 		return -1;
 	}
 	//[2,512]个之间
-	static size_t Num_Move_Size(size_t size) {
+	static size_t NumMoveSize(size_t size) {
 		if (size == 0) {
 			return 0;
 		}
@@ -110,8 +131,8 @@ public:
 		}
 		return num;
 	}
-	static size_t Num_Move_Page(size_t size) {
-		size_t num = Num_Move_Size(size);
+	static size_t NumMovePage(size_t size) {
+		size_t num = NumMoveSize(size);
 		size_t npage = num * size;
 
 		npage >>= 12;
@@ -183,8 +204,15 @@ public:
 	bool Empty() {
 		return Begin() == End();
 	}
+	void Lock() {
+		_mtx.lock();
+	}
+	void Unlock() {
+		_mtx.unlock();
+	}
 private:
 	Span* _head;
+	std::mutex _mtx;
 };
 
 inline static void* SystemAlloc(size_t num_page) {
@@ -197,4 +225,11 @@ inline static void* SystemAlloc(size_t num_page) {
 		throw std::bad_alloc();
 	}
 	return ptr;
+}
+
+inline static void SystemFree(void* ptr) {
+#ifdef _WIN32
+	VirtualFree(ptr, 0, MEM_RELEASE);
+#else
+#endif
 }
