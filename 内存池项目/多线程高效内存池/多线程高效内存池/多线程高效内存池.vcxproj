@@ -117,6 +117,7 @@
   <ItemGroup>
     <ClInclude Include="central_cache.h" />
     <ClInclude Include="common.h" />
+    <ClInclude Include="concurrent_malloc.h" />
     <ClInclude Include="page_cache.h" />
     <ClInclude Include="thread_cache.h" />
   </ItemGroup>

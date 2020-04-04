@@ -154,7 +154,9 @@ typedef unsigned long long PAGE_ID;
 struct Span {
 	PAGE_ID _pageid;//页号
 	int _pagesize;//页的数量
+
 	FreeList _freelist;//对象自由链表
+	size_t _objsize;//自由链表对象大小
 	int _usecount;//内存块对象使用次数
 
 	Span* _next;
