@@ -150,7 +150,7 @@ void* my_memcpy(void* dest, const void* src, size_t n)//作用与strcpu相同，但是me
 {
 	assert(dest && src);
 	char* str1 = (char*)dest;
-	char* str2 = (const char*)src;
+	const char* str2 = (const char*)src;
 	while (n--)
 	{
 		*str1++ = *str2++;
